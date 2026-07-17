@@ -49,6 +49,8 @@ const ubx_cfg_item_t CFG_UART1INPROT_SPARTN = {"CFG_UART1INPROT_SPARTN", 0x10730
 // cfg uart1outprot
 const ubx_cfg_item_t CFG_UART1OUTPROT_UBX = {"CFG_UART1OUTPROT_UBX", 0x10740001, L, 1, NA};
 const ubx_cfg_item_t CFG_UART1OUTPROT_NMEA = {"CFG_UART1OUTPROT_NMEA", 0x10740002, L, 1, NA};
+
+// @exclude: F9R
 const ubx_cfg_item_t CFG_UART1OUTPROT_RTCM3X = {"CFG_UART1OUTPROT_RTCM3X", 0x10740004, L, 1, NA};
 
 // cfg uart2
@@ -63,6 +65,8 @@ const ubx_cfg_item_t CFG_UART2INPROT_SPARTN = {"CFG_UART2INPROT_SPARTN", 0x10750
 // cfg uart2outprot
 const ubx_cfg_item_t CFG_UART2OUTPROT_UBX = {"CFG_UART2OUTPROT_UBX", 0x10760001, L, 1, NA};
 const ubx_cfg_item_t CFG_UART2OUTPROT_NMEA = {"CFG_UART2OUTPROT_NMEA", 0x10760002, L, 1, NA};
+
+// @exclude: F9R
 const ubx_cfg_item_t CFG_UART2OUTPROT_RTCM3X = {"CFG_UART2OUTPROT_RTCM3X", 0x10760004, L, 1, NA};
 
 // cfg usbinprot
@@ -73,7 +77,14 @@ const ubx_cfg_item_t CFG_USBINPROT_RTCM3X = {"CFG_USBINPROT_RTCM3X", 0x10770004,
 // cfg usboutprot
 const ubx_cfg_item_t CFG_USBOUTPROT_UBX = {"CFG_USBOUTPROT_UBX", 0x10780001, L, 1, NA};
 const ubx_cfg_item_t CFG_USBOUTPROT_NMEA = {"CFG_USBOUTPROT_NMEA", 0x10780002, L, 1, NA};
+
+// @exclude: F9R
 const ubx_cfg_item_t CFG_USBOUTPROT_RTCM3X = {"CFG_USBOUTPROT_RTCM3X", 0x10780004, L, 1, NA};
+
+// cfg i2c - I2C interface configuration
+// @only: X20P
+const ubx_cfg_item_t CFG_I2C_PULL_UPS_DISABLED =
+{"CFG_I2C_PULL_UPS_DISABLED", 0x1051000b, L, 1, NA};
 
 // cfg sec
 const ubx_cfg_item_t CFG_SEC_SPOOFDET_SIM_SIG_DIS =
@@ -110,16 +121,31 @@ const ubx_cfg_item_t CFG_SIGNAL_GAL_E6_ENA = {"CFG_SIGNAL_GAL_E6_ENA", 0x1031000
 const ubx_cfg_item_t CFG_SIGNAL_BDS_B2A_ENA = {"CFG_SIGNAL_BDS_B2A_ENA", 0x10310028, L, 1, NA};
 const ubx_cfg_item_t CFG_SIGNAL_BDS_B3_ENA = {"CFG_SIGNAL_BDS_B3_ENA", 0x10310010, L, 1, NA};
 const ubx_cfg_item_t CFG_SIGNAL_QZSS_L5_ENA = {"CFG_SIGNAL_QZSS_L5_ENA", 0x10310017, L, 1, NA};
+const ubx_cfg_item_t CFG_SIGNAL_QZSS_L1CB_ENA =
+{"CFG_SIGNAL_QZSS_L1CB_ENA", 0x10310039, L, 1, NA};
 
 // cfg signal NavIC since X20P
 // @only: X20P
 const ubx_cfg_item_t CFG_SIGNAL_NAVIC_ENA = {"CFG_SIGNAL_NAVIC_ENA", 0x10310026, L, 1, NA};
 const ubx_cfg_item_t CFG_SIGNAL_NAVIC_L5_ENA = {"CFG_SIGNAL_NAVIC_L5_ENA", 0x1031001d, L, 1, NA};
 
+// cfg bds - BeiDou system configuration since X20P
+// @only: X20P
+const ubx_cfg_item_t CFG_BDS_D1D2_NAVDATA = {"CFG_BDS_D1D2_NAVDATA", 0x20340009, E1, 1, NA};
+enum CFG_BDS_D1D2_NAVDATA_ENUM {BDS_NAVDATA_ALL = 0, BDS_NAVDATA_B1I = 1};
+const ubx_cfg_item_t CFG_BDS_USE_GEO_PRN = {"CFG_BDS_USE_GEO_PRN", 0x10340014, L, 1, NA};
+
+// cfg navcor - navigation corrections configuration since X20P
+// @only: X20P
+const ubx_cfg_item_t CFG_NAVCOR_ENABLE_HOST = {"CFG_NAVCOR_ENABLE_HOST", 0x100d0001, L, 1, NA};
+const ubx_cfg_item_t CFG_NAVCOR_ENABLE_GAL_HAS =
+{"CFG_NAVCOR_ENABLE_GAL_HAS", 0x100d0002, L, 1, NA};
+
 // cfg spartn
 const ubx_cfg_item_t CFG_SPARTN_USE_SOURCE = {"CFG_SPARTN_USE_SOURCE", 0x20a70001, E1, 1, NA};
 
 // cfg tmode - time mode configuration
+// @exclude: F9R
 const ubx_cfg_item_t CFG_TMODE_MODE = {"CFG_TMODE_MODE", 0x20030001, E1, 1, NA};
 enum CFG_TMODE_MODE_ENUM {DISABLED = 0, SURVEY_IN = 1, FIXED = 2};
 const ubx_cfg_item_t CFG_TMODE_POS_TYPE = {"CFG_TMODE_POS_TYPE", 0x20030002, E1, 1, NA};
@@ -191,6 +217,8 @@ enum CFG_NAVSPG_DYNMODEL_ENUM
 };
 
 // cfg odo
+// Odometer feature only supported on F9P/F9R (removed in X20P HPG 2.10)
+// @only: F9P,F9R
 const ubx_cfg_item_t CFG_ODO_USE_ODO = {"CFG_ODO_USE_ODO", 0x10220001, L, 1, NA};
 const ubx_cfg_item_t CFG_ODO_USE_COG = {"CFG_ODO_USE_COG", 0x10220002, L, 1, NA};
 const ubx_cfg_item_t CFG_ODO_OUTLPVEL = {"CFG_ODO_OUTLPVEL", 0x10220003, L, 1, NA};
@@ -253,11 +281,14 @@ const ubx_cfg_item_t CFG_SFODO_QUANT_ERROR =
 const ubx_cfg_item_t CFG_SFODO_LATENCY =
 {"CFG_SFODO_LATENCY", 0x3007000a, U2, 0, MS};
 
+// not available
+// @exclude: F9R
+const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_SVIN_USB =
+{"CFG_MSGOUT_UBX_NAV_SVIN_USB", 0x2091008b, U1, 0, NA};
+
 // cfg msgout - msg output rate configurations
 const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_STATUS_USB =
 {"CFG_MSGOUT_UBX_NAV_STATUS_USB", 0x2091001d, U1, 0, NA};
-const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_SVIN_USB =
-{"CFG_MSGOUT_UBX_NAV_SVIN_USB", 0x2091008b, U1, 0, NA};
 const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_CLOCK_USB =
 {"CFG_MSGOUT_UBX_NAV_CLOCK_USB", 0x20910068, U1, 0, NA};
 const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_COV_USB =
@@ -274,8 +305,11 @@ const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_POSLLH_USB =
 {"CFG_MSGOUT_UBX_NAV_POSLLH_USB", 0x2091002C, U1, 0, NA};
 const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_HPPOSLLH_USB =
 {"CFG_MSGOUT_UBX_NAV_HPPOSLLH_USB", 0x20910036, U1, 0, NA};
+// UBX-NAV-ODO only supported on F9P/F9R (removed in X20P HPG 2.10)
+// @only: F9P,F9R
 const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_ODO_USB =
 {"CFG_MSGOUT_UBX_NAV_ODO_USB", 0x20910081, U1, 0, NA};
+// end NAV-ODO exclusion - following MSGOUT items apply to all families
 const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_ORB_USB =
 {"CFG_MSGOUT_UBX_NAV_ORB_USB", 0x20910013, U1, 0, NA};
 const ubx_cfg_item_t CFG_MSGOUT_UBX_NAV_SAT_USB =
@@ -338,6 +372,7 @@ const ubx_cfg_item_t CFG_MSGOUT_UBX_RXM_COR_UART2 =
 {"CFG_MSGOUT_UBX_RXM_COR_UART2", 0x209106b8, U1, 0, NA};
 
 // Support both USB type and UART2 type messages simultaneously
+// @exclude: F9R
 const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1005_USB =
 {"CFG_MSGOUT_RTCM_3X_TYPE1005_USB", 0x209102c0, U1, 0, NA};
 const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1077_USB =
@@ -346,7 +381,6 @@ const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1087_USB =
 {"CFG_MSGOUT_RTCM_3X_TYPE1087_USB", 0x209102d4, U1, 0, NA};
 const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1097_USB =
 {"CFG_MSGOUT_RTCM_3X_TYPE1097_USB", 0x2091031b, U1, 0, NA};
-
 const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1074_UART2 =
 {"CFG_MSGOUT_RTCM_3X_TYPE1074_UART2", 0x20910360, U1, 0, NA};
 const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1084_UART2 =
@@ -362,10 +396,40 @@ const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1230_USB =
 const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1230_UART2 =
 {"CFG_MSGOUT_RTCM_3X_TYPE1230_UART2", 0x20910305, U1, 0, NA};
 
-// @exclude: X20P
+// RTCM-3X-TYPE1006 stationary antenna reference point (ARP) - USB only enabled
+// @only: X20P
+const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1006_USB =
+{"CFG_MSGOUT_RTCM_3X_TYPE1006_USB", 0x209102c5, U1, 0, NA};
+// Other TYPE1006 ports retained but disabled. To use a port: uncomment the const here
+// AND its map entry below, then regenerate the device tomls.
+// const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1006_I2C =
+// {"CFG_MSGOUT_RTCM_3X_TYPE1006_I2C", 0x209102c2, U1, 0, NA};
+// const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1006_UART1 =
+// {"CFG_MSGOUT_RTCM_3X_TYPE1006_UART1", 0x209102c3, U1, 0, NA};
+// const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1006_UART2 =
+// {"CFG_MSGOUT_RTCM_3X_TYPE1006_UART2", 0x209102c4, U1, 0, NA};
+// const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE1006_SPI =
+// {"CFG_MSGOUT_RTCM_3X_TYPE1006_SPI", 0x209102c6, U1, 0, NA};
+
+// RTCM-3X-TYPE4072_0 reference station PVT (moving base) - UART2 + USB enabled
+// @exclude: F9R
 const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART2 =
 {"CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART2", 0x20910300, U1, 0, NA};
+const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE4072_0_USB =
+{"CFG_MSGOUT_RTCM_3X_TYPE4072_0_USB", 0x20910301, U1, 0, NA};
+// Other TYPE4072_0 ports retained but disabled (uncomment const + map entry to use):
+// const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE4072_0_I2C =
+// {"CFG_MSGOUT_RTCM_3X_TYPE4072_0_I2C", 0x209102fe, U1, 0, NA};
+// const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART1 =
+// {"CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART1", 0x209102ff, U1, 0, NA};
+// const ubx_cfg_item_t CFG_MSGOUT_RTCM_3X_TYPE4072_0_SPI =
+// {"CFG_MSGOUT_RTCM_3X_TYPE4072_0_SPI", 0x20910302, U1, 0, NA};
 
+// cfg rtcm - RTCM protocol configuration
+// DF028 antenna reference point height above marker, used with RTCM 1006 in/out (0..6.5535 m)
+// @only: X20P
+const ubx_cfg_item_t CFG_RTCM_DF028_OUT =
+{"CFG_RTCM_DF028_OUT", 0x30090010, U2, 0.0001, M};
 
 // cfg itfm - Jamming and interference monitor configuration
 // removed in latest F9P 1.5 firmware
@@ -406,6 +470,7 @@ ubx_cfg_item_map_t ubxKeyCfgItemMap = {
   {CFG_USBOUTPROT_UBX.ubx_key_id, CFG_USBOUTPROT_UBX},
   {CFG_USBOUTPROT_NMEA.ubx_key_id, CFG_USBOUTPROT_NMEA},
   {CFG_USBOUTPROT_RTCM3X.ubx_key_id, CFG_USBOUTPROT_RTCM3X},
+  {CFG_I2C_PULL_UPS_DISABLED.ubx_key_id, CFG_I2C_PULL_UPS_DISABLED},
   {CFG_SPARTN_USE_SOURCE.ubx_key_id, CFG_SPARTN_USE_SOURCE},
   {CFG_TMODE_MODE.ubx_key_id, CFG_TMODE_MODE},
   {CFG_TMODE_POS_TYPE.ubx_key_id, CFG_TMODE_POS_TYPE},
@@ -453,11 +518,16 @@ ubx_cfg_item_map_t ubxKeyCfgItemMap = {
   {CFG_SIGNAL_QZSS_L1S_ENA.ubx_key_id, CFG_SIGNAL_QZSS_L1S_ENA},
   {CFG_SIGNAL_QZSS_L2C_ENA.ubx_key_id, CFG_SIGNAL_QZSS_L2C_ENA},
   {CFG_SIGNAL_QZSS_L5_ENA.ubx_key_id, CFG_SIGNAL_QZSS_L5_ENA},
+  {CFG_SIGNAL_QZSS_L1CB_ENA.ubx_key_id, CFG_SIGNAL_QZSS_L1CB_ENA},
   {CFG_SIGNAL_GLO_ENA.ubx_key_id, CFG_SIGNAL_GLO_ENA},
   {CFG_SIGNAL_GLO_L1_ENA.ubx_key_id, CFG_SIGNAL_GLO_L1_ENA},
   {CFG_SIGNAL_GLO_L2_ENA.ubx_key_id, CFG_SIGNAL_GLO_L2_ENA},
   {CFG_SIGNAL_NAVIC_ENA.ubx_key_id, CFG_SIGNAL_NAVIC_ENA},
   {CFG_SIGNAL_NAVIC_L5_ENA.ubx_key_id, CFG_SIGNAL_NAVIC_L5_ENA},
+  {CFG_BDS_D1D2_NAVDATA.ubx_key_id, CFG_BDS_D1D2_NAVDATA},
+  {CFG_BDS_USE_GEO_PRN.ubx_key_id, CFG_BDS_USE_GEO_PRN},
+  {CFG_NAVCOR_ENABLE_HOST.ubx_key_id, CFG_NAVCOR_ENABLE_HOST},
+  {CFG_NAVCOR_ENABLE_GAL_HAS.ubx_key_id, CFG_NAVCOR_ENABLE_GAL_HAS},
   {CFG_SIGNAL_PLAN.ubx_key_id, CFG_SIGNAL_PLAN},
 
   {CFG_ODO_USE_ODO.ubx_key_id, CFG_ODO_USE_ODO},
@@ -531,7 +601,17 @@ ubx_cfg_item_map_t ubxKeyCfgItemMap = {
   {CFG_MSGOUT_RTCM_3X_TYPE1094_UART2.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1094_UART2},
   {CFG_MSGOUT_RTCM_3X_TYPE1124_UART2.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1124_UART2},
   {CFG_MSGOUT_RTCM_3X_TYPE1230_UART2.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1230_UART2},
+  {CFG_MSGOUT_RTCM_3X_TYPE1006_USB.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1006_USB},
+  // {CFG_MSGOUT_RTCM_3X_TYPE1006_I2C.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1006_I2C},
+  // {CFG_MSGOUT_RTCM_3X_TYPE1006_UART1.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1006_UART1},
+  // {CFG_MSGOUT_RTCM_3X_TYPE1006_UART2.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1006_UART2},
+  // {CFG_MSGOUT_RTCM_3X_TYPE1006_SPI.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE1006_SPI},
   {CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART2.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART2},
+  {CFG_MSGOUT_RTCM_3X_TYPE4072_0_USB.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE4072_0_USB},
+  // {CFG_MSGOUT_RTCM_3X_TYPE4072_0_I2C.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE4072_0_I2C},
+  // {CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART1.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE4072_0_UART1},
+  // {CFG_MSGOUT_RTCM_3X_TYPE4072_0_SPI.ubx_key_id, CFG_MSGOUT_RTCM_3X_TYPE4072_0_SPI},
+  {CFG_RTCM_DF028_OUT.ubx_key_id, CFG_RTCM_DF028_OUT},
 
   // X20P UART1/UART2 UBX message output parameters
   {CFG_MSGOUT_UBX_NAV_HPPOSLLH_UART1.ubx_key_id, CFG_MSGOUT_UBX_NAV_HPPOSLLH_UART1},

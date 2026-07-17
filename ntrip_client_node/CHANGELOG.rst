@@ -2,6 +2,24 @@
 Changelog for package ntrip_client_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.6 (2026-07-09)
+------------------
+* reverted to cmake ver 3.22 for humble
+* updated min cmake version
+* Contributors: Nick Hortovanyi
+
+0.7.5 (2026-06-23)
+------------------
+* Merge pull request `#65 <https://github.com/aussierobots/ublox_dgnss/issues/65>`_ from gsokoll/fix/ntrip-version-header
+  fix(ntrip_client): send Ntrip-Version: Ntrip/2.0 header
+* fix(ntrip_client): send Ntrip-Version: Ntrip/2.0 header
+  Many NTRIP casters only serve the stream when the request advertises NTRIP v2. Without the Ntrip-Version header the caster rejects the request(HTTP 404) and no RTCM corrections are ever received, silently degradingthe receiver to a standalone fix. Add the 'Ntrip-Version: Ntrip/2.0'request header via a curl_slist and free it in the destructor.
+* updated cmake minimum version
+* Contributors: Geoff Sokoll, Nick Hortovanyi
+
+0.7.4 (2026-04-16)
+------------------
+
 0.7.3 (2026-03-29)
 ------------------
 * Add ros2 runtime parameter reconfiguration support to ntrip_client_node

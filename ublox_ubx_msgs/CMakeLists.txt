@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.22)
 project(ublox_ubx_msgs)
 
 # Default to C99
@@ -6,7 +6,7 @@ if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
 
-# Default to C++14
+# Default to C++17
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
 endif()
@@ -85,6 +85,8 @@ rosidl_generate_interfaces(ublox_ubx_msgs
   "msg/UBXNavVelNED.msg"
   "msg/UBXRxmCor.msg"
   "msg/UBXRxmMeasx.msg"
+  "msg/UBXRxmPmp.msg"
+  "msg/UBXRxmQzssl6.msg"
   "msg/UBXRxmRawx.msg"
   "msg/UBXRxmRTCM.msg"
   "msg/UBXRxmSfrbx.msg"

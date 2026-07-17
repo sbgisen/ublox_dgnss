@@ -2,6 +2,20 @@
 Changelog for package ublox_ubx_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.6 (2026-07-09)
+------------------
+* reverted to cmake ver 3.22 for humble
+* updated min cmake version
+* Contributors: Nick Hortovanyi
+
+0.7.5 (2026-06-23)
+------------------
+* updated cmake minimum version
+* Contributors: Nick Hortovanyi
+
+0.7.4 (2026-04-16)
+------------------
+
 0.7.3 (2026-03-29)
 ------------------
 
