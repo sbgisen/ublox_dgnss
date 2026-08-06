@@ -2,6 +2,24 @@
 Changelog for package ublox_dgnss
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.6 (2026-07-09)
+------------------
+* reverted to cmake ver 3.22 for humble
+* updated min cmake version
+* Contributors: Nick Hortovanyi
+
+0.7.5 (2026-06-23)
+------------------
+* fixed F9R parameters - removed unused
+* updated cmake minimum version
+* Merge pull request `#64 <https://github.com/aussierobots/ublox_dgnss/issues/64>`_ from aussierobots/feat/hpg-2.10-x20p
+  Feat/hpg 2.10 x20p
+* Add HPG 2.10 config items and disable X20P odometer; regenerate device configs
+* Contributors: Nick Hortovanyi
+
+0.7.4 (2026-04-16)
+------------------
+
 0.7.3 (2026-03-29)
 ------------------
 * Added UBX_RXM_SFRBX and fixed bug for param set being sent to usb device upon change
